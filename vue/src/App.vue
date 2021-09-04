@@ -122,9 +122,7 @@ body {
   .images {
     position: absolute;
     top: 152px;
-    /* width: 20px; */
     left: 50px;
-    /* right: 600px; */
   }
 }
 .hero-img {
@@ -212,8 +210,6 @@ body {
     content: "";
     top: 18px;
     height: 2px;
-    /* width: 50px; */
-    /* background: #000; */
     left: 37%;
   }
 }
@@ -224,8 +220,6 @@ body {
     content: "";
     top: 18px;
     height: 2px;
-    /* width: 50px; */
-    /* background: #000; */
     left: 37%;
   }
 }
@@ -235,16 +229,11 @@ body {
   /* margin-left: 15px; */
   display: flex;
   align-items: center;
-  /* align-items: center; */
   justify-content: center;
   margin-left: 20px;
-  /* padding: 10px; */
-  /* box-shadow: 111px 10px red; */
 }
 .card img {
   width: 95%;
-  /* border: 1px solid; */
-  /* padding: 10px; */
   box-shadow: 0px 30px lightgrey;
 }
 .card p {
@@ -256,10 +245,6 @@ body {
 @media screen and (max-width: 768px) {
   .cards {
     position: relative;
-    /* top: 2260px;
-    left: 165px;
-    font-size: 30px; */
-    /* padding-left: 5em; */
     display: inline-block;
     margin-top: 25px;
     /* padding: 65px; */
@@ -271,14 +256,8 @@ body {
 @media screen and (max-width: 768px) {
   .cards img {
     position: relative;
-    /* top: 2260px;
-    left: 165px;
-    font-size: 30px; */
-    /* padding-left: 5em; */
     display: inline-block;
     margin-top: 25px;
-    /* padding: 65px; */
-    /* margin-left: 110px; */
     font-size: 30px;
   }
 }
@@ -294,10 +273,6 @@ body {
 
 .text2 {
   position: absolute;
-  /* top: 2260px;
-  left: 165px;
-  font-size: 30px; */
-  /* padding-left: 5em; */
   display: inline-block;
   margin-top: 300px;
   margin-left: 150px;
@@ -307,10 +282,6 @@ body {
 @media screen and (max-width: 768px) {
   .text2 {
     position: relative;
-    /* top: 2260px;
-    left: 165px;
-    font-size: 30px; */
-    /* padding-left: 5em; */
     display: inline-block;
     margin-top: 25px;
     margin-left: 180px;
@@ -321,16 +292,12 @@ body {
 .cards1 {
   margin-top: 65px;
   margin-left: 460px;
-  /* float: left; */
-  /* margin-bottom: 385px; */
 }
 
 @media screen and (max-width: 768px) {
   .cards1 {
     margin-top: 65px;
     margin-left: 150px;
-    /* float: left; */
-    /* margin-bottom: 385px; */
   }
 }
 
@@ -339,8 +306,6 @@ body {
   background: #000000;
   color: white;
   padding: 25px;
-  /* text-align: center; */
-  /* align-items: center; */
 }
 
 .shiping ul {
@@ -352,15 +317,9 @@ body {
   /* text-decoration: none; */
   display: inline-block;
   text-indent: 180px;
-  /* margin-left: 82px; */
-  /* padding: 10px 50px 50px 10px;  */
-  /* text-align: center; */
-  /* padding: 20px; */
 }
 
 .shiping ul li p {
-  /* display: inline-block; */
-  /* text-indent: 120px; */
   font-size: 10px;
   font-weight: 20px;
   color: #b0b0b0;
@@ -460,8 +419,6 @@ input[type="email"] {
 }
 
 .icon-bar {
-  /* display: flex;
-  align-items: center; */
   margin-top: 5px;
   display: inline-block;
 }
@@ -566,9 +523,7 @@ input[type="email"] {
   margin-left: 180px;
 }
 .product-bar ul li {
-  /* list-style: none; */
   display: inline-block;
-  /* margin-top: 30px; */
   padding: 10px;
 }
 .product-section {
@@ -576,10 +531,7 @@ input[type="email"] {
   grid-template-columns: 250px 250px;
   /* grid-template-rows: repeat(8, 5vw); */
   grid-gap: 50px;
-  /* margin-top: 150px; */
-  /* margin-bottom: 50px; */
   padding: 25px;
-  /* padding: 20px; */
   margin-left: 85px;
 }
 
@@ -619,34 +571,9 @@ input[type="email"] {
 hr {
   width: 300px;
 }
-/* .quantity {
-  display: flex;
-}
 
-.quantity button {
-  width: 25px;
-  height: 45px;
-  border: 1px solid #000;
-  color: #000;
-  border-radius: 0;
-  background: #fff;
-}
-
-.quantity input {
-  border: none;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  text-align: center;
-  width: 100px;
-  font-size: 20px;
-  color: #000;
-  font-weight: 300;
-} */
 .quantity {
   display: flex;
-  /* justify-content: center; */
-  /* outline: none;
-  border: none; */
   height: 40px;
   border: 1px solid black;
   width: 135px;
@@ -657,7 +584,6 @@ hr {
   width: 25px;
   padding: 2px;
   height: 35px;
-  /* border: 1px solid #000; */
   color: #000;
   border-radius: 0;
   background: #fff;
@@ -667,8 +593,6 @@ hr {
 .quantity input {
   border: none;
   outline: none;
-  /* border-top: 1px solid #000;
-  border-bottom: 1px solid #000; */
   text-align: center;
   width: 100px;
   font-size: 20px;
