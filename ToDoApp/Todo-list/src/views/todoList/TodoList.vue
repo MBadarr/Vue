@@ -1,11 +1,46 @@
-<script>
-import { computed, reactive, toRefs } from "vue";
-import Axios from "axios";
+<template>
+  <div>
+    <Navbar />
+    <div v-if="token == null || token == ''" id="home">
+      <h2>Welcome to the Todo list App</h2>
+    </div>
+    <main v-if="token != null && token != ''" class="main-wrapper">
+      <ul class="task-list">
+        <button @click="addtodo">Add Todo</button>
+        <br />
+        <br />
+        <p v-if="taskList.length <= 0 && !loading">loading...</p>
+        <p v-if="loading && taskList.length <= 0">No todos</p>
+        <li v-for="taskItem in taskList" :key="taskItem.id" class="task-list-item">
+          <div class="task-list-checkbox-wrapper"></div>
+          <p @click="this.deleteTask(taskItem.id)" class="task-list-cta-icon">
+            <i class="fa fa-trash-o" style="font-size: 24px; color: red"></i>
+          </p>
+          <p
+            @click="
+              () => {
+                this.$router.push(`/edittodo?id=${taskItem.id}`);
+              }
+            "
+            class="task-list-text"
+            :class="taskItem.complete ? 'is-complete' : ''"
+          >
+            {{ taskItem.title }}:{{ taskItem.description }}
+          </p>
+        </li>
+      </ul>
+    </main>
+  </div>
+</template>
 
-import Navbar from "@/component/navbar.vue";
+<script>
+import { reactive, toRefs } from 'vue';
+import Axios from 'axios';
+
+import Navbar from '@/component/navbar.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Navbar,
   },
@@ -20,13 +55,13 @@ export default {
   },
 
   mounted() {
-    this.token = localStorage.getItem("token");
+    this.token = localStorage.getItem('token');
     this.todolist();
   },
 
   setup() {
     const state = reactive({
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem('token'),
       loading: false,
     });
 
@@ -38,37 +73,31 @@ export default {
   methods: {
     deleteTask(taskId) {
       Axios.delete(`http://54.144.155.145/api/item/${taskId}`, {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       });
       const taskIndex = this.taskList.findIndex((task) => task.id === taskId);
       this.taskList.splice(taskIndex, 1);
     },
     // redirect to create todo component.
     addtodo() {
-      this.$router.push("/createtodo");
+      this.$router.push('/createtodo');
     },
     // get todo list
     todolist() {
-      if (localStorage.getItem("token") != "") {
-        Axios.get("http://54.144.155.145/api/items", {
+      if (localStorage.getItem('token') != '') {
+        Axios.get('http://54.144.155.145/api/items', {
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
           },
         })
           .then((res) => {
-            console.log("-----", res);
+            console.log('-----', res);
             this.taskList = res.data.items.data;
             this.loading = true;
           })
           .catch(() => {
-            if (localStorage.getItem("token") != "") {
-              Axios.post(
-                `http://54.144.155.145/api/refresh-token/${localStorage.getItem(
-                  "token"
-                )}`
-              ).then((res) =>
-                localStorage.setItem("token", res.data.access_token)
-              );
+            if (localStorage.getItem('token') != '') {
+              Axios.post(`http://54.144.155.145/api/refresh-token/${localStorage.getItem('token')}`).then((res) => localStorage.setItem('token', res.data.access_token));
             }
           });
       }
@@ -76,42 +105,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <Navbar />
-  <div v-if="token == null || token == ''" id="home">
-    <h2>Welcome to the Todo list App</h2>
-  </div>
-
-  <main v-if="token != null && token != ''" class="main-wrapper">
-    <ul class="task-list">
-      <button @click="addtodo">Add Todo</button>
-      <p v-if="taskList.length <= 0 && !loading">loading...</p>
-      <p v-if="loading && taskList.length <= 0">No todos</p>
-      <li
-        v-for="taskItem in taskList"
-        :key="taskItem.id"
-        class="task-list-item"
-      >
-        <div class="task-list-checkbox-wrapper"></div>
-        <p @click="this.deleteTask(taskItem.id)" class="task-list-cta-icon">
-          <i class="fa fa-trash-o" style="font-size: 24px; color: red"></i>
-        </p>
-        <p
-          @click="
-            () => {
-              this.$router.push(`/edittodo?id=${taskItem.id}`);
-            }
-          "
-          class="task-list-text"
-          :class="taskItem.complete ? 'is-complete' : ''"
-        >
-          {{ taskItem.title }}:{{ taskItem.description }}
-        </p>
-      </li>
-    </ul>
-  </main>
-</template>
 
 <style scoped>
 html {

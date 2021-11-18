@@ -1,12 +1,11 @@
 <template>
   <div>
     <Navbar />
-
+    <br />
     <form @submit="(e) => e.preventDefault()" action="/">
       <div class="form">
         <input type="email" required placeholder="Email" class="new-task-input" v-model="email" />
         <input type="password" required placeholder="Password" class="new-task-input" v-model="password" />
-
         <button :disabled="isActive" @click="submit">Login</button>
       </div>
     </form>
@@ -49,8 +48,21 @@ export default {
           localStorage.setItem('token', res.data.user.token);
           this.$router.push('/');
         })
-        .catch((err) => console.log(err));
+        .catch(err);
     },
   },
 };
 </script>
+
+<style scoped>
+.form {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.new-task-input {
+  margin-bottom: 20px;
+}
+</style>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <br />
     <form @submit="(e) => e.preventDefault()">
       <div class="form">
         <input type="email" required placeholder="Email" class="new-task-input" v-model="email" />
@@ -18,7 +19,9 @@ import Axios from 'axios';
 import Navbar from '@/component/navbar.vue';
 import { computed } from '@vue/runtime-core';
 export default {
-  components: { Navbar },
+  components: {
+    Navbar,
+  },
   setup() {
     const state = reactive({
       email: '',
@@ -46,39 +49,25 @@ export default {
         password: this.password,
         password_confirmation: this.confirmPassword,
       })
-        .then((res) => this.$router.push('/login'))
-        .catch((err) => (msg = err));
+        .then((res) => {
+          localStorage.setItem('token', res.data.user.token);
+          this.$router.push('/');
+        })
+        .catch(err);
     },
   },
 };
 </script>
+
 <style scoped>
-.new-message-box-success {
-  background: #eeeeee;
-  padding: 3px;
-  margin: 10px 0;
+.form {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.tip-icon-success {
-  background: #8bc34a;
-}
-
-.tip-box-success {
-  color: #33691e;
-  background: #dcedc8;
-}
-
-.tip-icon-success::before {
-  font-size: 25px;
-  content: '\f00c';
-  top: 8px;
-  left: 11px;
-  font-family: FontAwesome;
-  position: absolute;
-  color: white;
-}
-
-.tip-icon-success i::before {
-  background: #8bc34a;
+.new-task-input {
+  margin-bottom: 20px;
 }
 </style>

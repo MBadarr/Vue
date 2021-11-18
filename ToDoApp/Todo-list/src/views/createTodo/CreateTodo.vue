@@ -1,5 +1,5 @@
 <template>
-  <main class="main-wrapper">
+  <div class="main-wrapper">
     <MainHero />
     <button @click="todolist">Todo List</button>
     <br />
@@ -9,7 +9,7 @@
       <input type="text" placeholder="Type a new todo desc" class="new-task-input" v-model="newTaskInput1" />
     </div>
     <button class="new-task-button" @click="addTask">+ Add</button>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -45,7 +45,6 @@ export default {
       },
     }).then((res) => {
       state.taskList = res.data.items.data;
-      // console.log("items::::::", state.taskList);
     });
 
     const taskLists = reactive({
@@ -119,7 +118,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 html {
   background-color: #fbfbfb;
 }
@@ -221,13 +220,12 @@ html {
 .new-task-button {
   background-color: #0631f8;
   color: #fff;
-  padding: 18px 24px;
-  font-weight: 900;
-  height: 55px;
+  padding: 10px 14px;
+  height: 45px;
   border: 0;
   border-radius: 8px;
-
-  transition: 0.2s background ease-in;
+  margin-top: 10px;
+  transition: 0.2s ease-in;
   font-size: 1rem;
 }
 
