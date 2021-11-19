@@ -49,11 +49,8 @@ export default {
         password: this.password,
         password_confirmation: this.confirmPassword,
       })
-        .then((res) => {
-          localStorage.setItem('token', res.data.user.token);
-          this.$router.push('/');
-        })
-        .catch(err);
+        .then(() => this.$router.push('/login'))
+        .catch((err) => (msg = err));
     },
   },
 };
